@@ -13,7 +13,7 @@ At each milestone, copy the observed results under **Checkpoint**, then answer t
 
 ### Question 1 · Explanation
 
-Answer: [JAWAB]
+Answer: The model version is used for version tracking. The Git SHA identifies the individual and unique commit made in the repository.
 
 ## Milestone 2 · Serve predictions with FastAPI
 
@@ -29,7 +29,7 @@ Answer: [JAWAB]
 
 ### Question 2 · Explanation
 
-Answer: `/ready` check the model version used. The model version help us to know which model was used for the prediction.
+Answer: `/health` confirms that the FastAPI server process is running while `/ready` verifies the model that actually loaded into memory and reports the version of the model. The model version help us to know which model was used for the prediction.
 
 ## Milestone 3 · Run tests and build in GitHub Actions
 
@@ -48,7 +48,7 @@ For the two job statuses, use `PASS`, `FAIL`, `PENDING`, `SKIPPED`, `CANCELLED` 
 
 ### Question 3 · Explanation
 
-Answer:
+Answer: The `tests` runs `uv sync --locked` and `pytest -q tests/test_api.py` on pushes and pull requests to `main`. The check run will ensure that the dependency issues, Docker build failures or wrong model artifacts are caught automatically before the code is merged or deployed to staging phase.
 
 ## Milestone 4 · Verify a staging release
 
@@ -65,7 +65,7 @@ Answer:
 
 ### Question 4 · Explanation
 
-Answer: I would not approve the deployment as it was not the intended version of the model.
+Answer: I would not approve the deployment as it was not the intended version of the model. I need to check the model artifact in `/model`
 
 ## Milestone 5 · Compare input distributions
 
@@ -73,13 +73,18 @@ Answer: I would not approve the deployment as it was not the intended version of
 
 Fill each row from its own `summary.json`. Use the file from the CURRENT report for the first row and the file from the SHIFTED report for the second. In both files, `current_mean` is the mean brightness of the batch you checked. Use the exact `score` (p-value) and `threshold` (cutoff). Enter `DRIFT` when `drift_detected` is true and `NO DRIFT` when it is false.
 
-| Batch     | Reference mean (`reference_mean`) | Batch mean (`current_mean`) | Method | Score | Threshold | Result (`DRIFT` or `NO DRIFT`) |
-| --------- | --------------------------------- | --------------------------- | ------ | ----- | --------- | ------------------------------ |
-| `CURRENT` |                                   |                             |        |       |           |                                |
-| `SHIFTED` |                                   |                             |        |       |           |                                |
+| Batch     | Reference mean (`reference_mean`) | Batch mean (`current_mean`) | Method      | Score                  | Threshold | Result (`DRIFT` or `NO DRIFT`) |
+| --------- | --------------------------------- | --------------------------- | ----------- | ---------------------- | --------- | ------------------------------ |
+| `CURRENT` | 0.4724440528104574                | 0.47574189751633994         | K-S p_value | 0.8079631540901643     | 0.05      | `NO DRIFT`                     |
+| `SHIFTED` | 0.4724440528104574                | 0.16466240836601304         | K-S p_value | 1.6911233892144742e-17 | 0.05      | `DRIFT`                        |
 
-- Final full test count:
+- Final full test count: `9 passed, 10 warnings in 2.90s`
 
 ### Question 5 · Explanation
 
-Answer:
+Answer: We are using the K-S test on `mean-brightness` with a threshold of `0.05`
+
+- For `CURRENT` : `p=0.808 > 0.05` giving us `NO DRIFT` because the brightness of the images matches the reference data.
+- For `SHIFTED` : `p=1.69e-17 < 0.05` giving us `DRIFT` as result because the images are significantly darker than the reference batch.
+
+The shift might affect the model's accuracy. From the labels, we should investigate why incoming photos became darker and then evaluate model accuracy on the shifted data
