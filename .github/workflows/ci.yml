@@ -2,7 +2,10 @@ name: Leaf API CI
 
 # TODO 2a - Use pull requests into main and pushes to main.
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read

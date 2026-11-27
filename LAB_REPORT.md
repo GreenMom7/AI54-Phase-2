@@ -35,14 +35,14 @@ Answer: `/ready` check the model version used. The model version help us to know
 
 ### Checkpoint 3 · Evidence
 
-- Local branch:
-- Local commit SHA:
-- Local API test count:
-- Actions run source (`main`, `PULL REQUEST` or `UNAVAILABLE`):
-- Actions run URL:
-- `tests` job status:
-- `docker-build` job status:
-- Container smoke result or first failed CI step:
+- Local branch: main
+- Local commit SHA: d6f6aff74279daf584bceb1610f0df07dcecf6f8
+- Local API test count: `7 passed in 0.33s`
+- Actions run source (`main`, `PULL REQUEST` or `UNAVAILABLE`): `main`
+- Actions run URL: https://github.com/GreenMom7/AI54-Phase-2/actions/runs/46007344671
+- `tests` job status: `PASS`
+- `docker-build` job status:`PASS`
+- Container smoke result or first failed CI step: `PASS`
 
 For the two job statuses, use `PASS`, `FAIL`, `PENDING`, `SKIPPED`, `CANCELLED` or `UNAVAILABLE`. Use `SKIPPED` when Actions shows that a job was skipped. Use `UNAVAILABLE` for missing CI evidence.
 
@@ -54,18 +54,18 @@ Answer:
 
 ### Checkpoint 4 · Evidence
 
-- Mode (`RENDER` or `LOCAL`):
-- Target URL:
-- Tested commit SHA:
-- Expected model version from Checkpoint 1:
-- Observed model version from `/ready` (`UNAVAILABLE` if it returned none):
-- Smoke check result (`PASS` or `FAIL`):
-- First error, if any:
+- Mode (`RENDER` or `LOCAL`): `RENDER`
+- Target URL: https://ai54-phase-2.onrender.com
+- Tested commit SHA: d6f6aff74279daf584bceb1610f0df07dcecf6f8
+- Expected model version from Checkpoint 1: `phase1-reference-v1`
+- Observed model version from `/ready` (`UNAVAILABLE` if it returned none): `phase1-reference-v1`
+- Smoke check result (`PASS` or `FAIL`): `PASS`
+- First error, if any: No error occured
 - Earlier Render attempt, if switching to local (URL if available and reason for switching):
 
 ### Question 4 · Explanation
 
-Answer:
+Answer: I would not approve the deployment as it was not the intended version of the model.
 
 ## Milestone 5 · Compare input distributions
 
