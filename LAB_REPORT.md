@@ -7,24 +7,29 @@ At each milestone, copy the observed results under **Checkpoint**, then answer t
 ### Checkpoint 1 · Evidence
 
 - GitHub repository URL:
-- Expected model version:
-- Three class labels:
-- First pushed commit SHA:
+- Expected model version: phase1-reference-v1
+- Three class labels: `angular_leaf_spot`, `bean_rust`, `healthy`
+- First pushed commit SHA: 27c5fd5be6e343ca4768a3052711318c90366b74
 
 ### Question 1 · Explanation
 
-Answer:
+Answer: [JAWAB]
 
 ## Milestone 2 · Serve predictions with FastAPI
 
 ### Checkpoint 2 · Evidence
 
-- Final API test count after TODO 1:
+- Final API test count after TODO 1: `7 passed in 0.33s`
 - Browser prediction JSON for `data/current/leaf-01.jpg` (`UNAVAILABLE` and the error shown if the page gives no prediction):
+  `{
+  "label": "angular_leaf_spot",
+  "confidence": 0.5016347169876099,
+  "model_version": "phase1-reference-v1"
+}`
 
 ### Question 2 · Explanation
 
-Answer:
+Answer: `/ready` check the model version used. The model version help us to know which model was used for the prediction.
 
 ## Milestone 3 · Run tests and build in GitHub Actions
 
