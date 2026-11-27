@@ -68,10 +68,10 @@ Answer:
 
 Fill each row from its own `summary.json`. Use the file from the CURRENT report for the first row and the file from the SHIFTED report for the second. In both files, `current_mean` is the mean brightness of the batch you checked. Use the exact `score` (p-value) and `threshold` (cutoff). Enter `DRIFT` when `drift_detected` is true and `NO DRIFT` when it is false.
 
-| Batch | Reference mean (`reference_mean`) | Batch mean (`current_mean`) | Method | Score | Threshold | Result (`DRIFT` or `NO DRIFT`) |
-| --- | --- | --- | --- | --- | --- | --- |
-| `CURRENT` | | | | | | |
-| `SHIFTED` | | | | | | |
+| Batch     | Reference mean (`reference_mean`) | Batch mean (`current_mean`) | Method | Score | Threshold | Result (`DRIFT` or `NO DRIFT`) |
+| --------- | --------------------------------- | --------------------------- | ------ | ----- | --------- | ------------------------------ |
+| `CURRENT` |                                   |                             |        |       |           |                                |
+| `SHIFTED` |                                   |                             |        |       |           |                                |
 
 - Final full test count:
 
